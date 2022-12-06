@@ -6,11 +6,16 @@ interface HomePageProps {
 }
 
 export default function Home({ products }: HomePageProps) {
-  const handleCheckout = (priceId) => () => {
-    fetch("http://localhost:3000/api/checkout_sessions", {
-      method: "POST",
-      body: JSON.stringify({ priceId }),
-    });
+  const handleCheckout = (priceId) => async () => {
+    const response = await fetch(
+      "http://localhost:3000/api/checkout_sessions",
+      {
+        method: "POST",
+        body: JSON.stringify({ priceId }),
+      }
+    );
+    const { sessionUrl } = await response.json();
+    window.location.href = sessionUrl;
   };
 
   return (

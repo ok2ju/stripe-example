@@ -23,7 +23,7 @@ export default async function handler(
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
-      res.redirect(303, session.url as string);
+      res.json({ sessionUrl: session.url }); // `res.redirect` doesn't work when request originated using `fetch` api
     } catch (error: any) {
       res.status(error.statusCode || 500).json(error.message);
     }
