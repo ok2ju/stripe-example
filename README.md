@@ -1,6 +1,6 @@
 # Stripe example
 
-Sample showcase of stripe api
+Sample showcase of [Stripe](https://stripe.com) api
 
 ## Getting Started
 
